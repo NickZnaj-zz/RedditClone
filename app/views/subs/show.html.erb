@@ -1,0 +1,22 @@
+<h1> <%= @sub.title %> </h1>
+
+
+
+<%= @sub.description %>
+
+<br> <br>
+
+<% @sub.posts.each do |post| %>
+  <ul>
+    <strong><%= post.title %> by <i><%= post_author(post) %></i></strong> <br>
+    &nbsp; &nbsp;<%= post.content %>
+  </ul>
+<% end %>
+
+<br> <br> <br>
+
+<a href= <%= new_sub_post_url(@sub) %>>Create New Post</a>
+
+<br> <br> <br>
+
+<a href=<%= subs_url %>>Back to Sub</a>

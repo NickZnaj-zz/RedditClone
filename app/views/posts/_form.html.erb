@@ -1,0 +1,40 @@
+<% action_url = @post.persisted? ? sub_post_url : sub_posts_url %>
+<% mmethod = @post.persisted? ? "patch" : "post" %>
+
+<form action="<%= action_url %>" method="post">
+  <input type="hidden" name="_method" value="<%= mmethod %>">
+
+<label for "title">Post Title</label>
+  <input
+    type="text"
+    name="post[title]"
+    id="title"
+    value="<%= @post.title if @post %>">
+<br><br>
+
+<label for "content">Content</label>
+  <textarea id="content" name="post[content]"><%= @post.content if @post %></textarea>
+<br><br>
+
+<label for "url">URL</label>
+  <input
+    type="text"
+    name="post[url]"
+    id="url"
+    value="<%= @post.url if @post %>">
+<br><br>
+<input type="hidden" name="post[sub_ids][]" value="">
+  <% Sub.all.each do |ssub|  %>
+    <label><%= ssub.title %>
+      <input
+        type="checkbox"
+        name="post[sub_ids][]"
+        value=<%= ssub.id  %>
+        <%= "checked" if @post.sub_ids.include?(ssub.id) %>>
+    </label>
+  <% end %>
+  <input type="submit" value="submit">
+
+</form>
+
+<a href=<%=sub_url(params[:sub_id]) %>>Back</a>

@@ -1,0 +1,9 @@
+<h1>Add a Post!</h1>
+<% if flash.now[:errors] %>
+  <% flash.now[:errors].each do |err| %>
+    <%= err %>
+  <% end %>
+<% end %>
+
+
+<%= render "form" %>

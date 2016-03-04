@@ -1,0 +1,19 @@
+<h1>Sign Up!</h1>
+
+<form action="/user" method="post">
+  <label for="username">Username</label>
+  <input
+    type="text"
+    id="username"
+    value="<%= @user.username %>"
+    name="user[username]">
+
+  <label for="password">Password</label>
+  <input
+    type="password"
+    id="password"
+    value=""
+    name="user[password]">
+
+  <input type="submit" value="Sign Up!">
+</form>

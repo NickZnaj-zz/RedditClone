@@ -1,0 +1,27 @@
+<h1>Login!</h1>
+
+<ul>
+  <% if @user %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<form action="/session" method="post">
+  <label for "username">Username</label>
+  <input
+    type="text"
+    id="username"
+    name="user[username]"
+    value="<%= @user.username if @user %>">
+
+  <label for "password">Password</label>
+  <input
+    type="password"
+    id="password"
+    name="user[password]"
+    value="">
+
+  <input type="submit" value="Login!">
+</form>
